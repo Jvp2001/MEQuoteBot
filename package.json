@@ -1,0 +1,10 @@
+{
+	"name":"MeQuoteBot",
+	"description": "My ME Quote Bot",
+	"version 1.3",
+	"main": "FaithQuotes.py",
+	"dependencies":
+	{
+		"discord.py":"0.16.12"
+	}
+}
