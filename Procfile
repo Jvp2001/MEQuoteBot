@@ -1,1 +1,1 @@
-worker: python FaithQuotes.py
+worker: python faithquotes.py
