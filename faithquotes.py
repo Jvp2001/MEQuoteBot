@@ -49,7 +49,7 @@ async def quote(ctx):
         else:
             if msg[1] == "Jerry" or msg[1] == "jerry":
                 await client.send_message(message.channel,
-                                          "When a girl buys a vibrator its seen as a bit of naughty fun. BUT when a guy orders a 240 Volt FuckMaster Pro 5000 blowup latex doll with 6 speed pulsating vagina, elasticized anus with non-drip semen collection tray, together with optional built in realistic orgasm scream surround sound system, hes called a pervert?\n-(SteveGlowPlunk)\n")
+                                          "When a girl buys a vibrator its seen as a bit of naughty fun. BUT when a guy orders a 240 Volt FuckMaster Pro 5000 blowup latex doll with 6 speed pulsating vagina, elasticized anus with non-drip semen collection tray, together with optional built in realistic orgasm scream surround sound system, he's called a pervert?\n-(SteveGlowPlunk & Jerry)\n")
 
             if msg[1] == "add":
 
