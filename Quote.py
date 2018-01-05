@@ -1,5 +1,5 @@
 class Quotes:
-    file = "Quotes.txt"
+    file = "Files/Quotes.txt"
     @classmethod
     async def add(cls,quote:str() ,author: str, updateQuotes, callback):
         with open(cls.file,"a+") as file:

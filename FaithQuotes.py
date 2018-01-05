@@ -3,8 +3,8 @@ import discord
 import discord.ext.commands
 import discord.ext.commands.bot as b
 
-import Quote
 import Speeches
+from Repos.QuoteBot import Quote
 
 Quotes = Quote.Quotes
 bot = b.Bot(command_prefix="!")
@@ -47,7 +47,7 @@ async def quote(ctx):
             print(quote)
             await client.send_message(message.channel,quote)
         else:
-            if msg[1] == "jerry".lower():
+            if msg[1] == "Jerry" or msg[1] == "jerry":
                 await client.send_message(message.channel,
                                           "When a girl buys a vibrator its seen as a bit of naughty fun. BUT when a guy orders a 240 Volt FuckMaster Pro 5000 blowup latex doll with 6 speed pulsating vagina, elasticized anus with non-drip semen collection tray, together with optional built in realistic orgasm scream surround sound system, hes called a pervert?\n-(SteveGlowPlunk)\n")
 
