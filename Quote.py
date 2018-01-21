@@ -1,5 +1,8 @@
+import discord
+from discord.ext import commands
 class Quotes:
-    file = "Files/Quotes.txt"
+    file = "./Files/Quotes.txt"
+
     @classmethod
     async def add(cls,quote:str() ,author: str, updateQuotes, callback):
         with open(cls.file,"a+") as file:
@@ -11,8 +14,7 @@ class Quotes:
                 file.write(q)
                 file.write("\n")
                 await updateQuotes()
-            else:
-                await callback()
+
     @classmethod
     def makeQuote(cls,quoteArr) -> str:
         quote = ""

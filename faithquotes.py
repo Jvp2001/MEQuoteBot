@@ -1,19 +1,25 @@
 
-import discord
+import discord, Speeches, sys, traceback
 import discord.ext.commands
 import discord.ext.commands.bot as b
+import Quote, BotConfigLoader as bcl
 
-import Speeches
-from Repos.QuoteBot import Quote
+help_attrs = dict()
+
+initial_extensions = ["cogs.Quotes","cogs.Speeches"]
 
 Quotes = Quote.Quotes
-bot = b.Bot(command_prefix="!")
+bot = b.Bot(command_prefix="!",discription="lets you add or retrieve random quotes, mainly ME related.")
 
 quotes = set()
 
 client = discord.Client()
 
 help_msg="!Quote for a quote."
+
+
+
+
 @client.event
 async def on_ready():
     print('Logged in as')
@@ -21,11 +27,11 @@ async def on_ready():
     print(client.user.id)
     print('------')
     await client.change_presence(game=discord.Game(name="Mirror's Edge"))
+    bot.remove_command("help")
     global quotes
 
     quotes = Quotes.GetQuotes()
     print(quotes)
-
 
 
 
@@ -35,6 +41,8 @@ async def on_message(message):
     #     msg = message.content[12:]
     #     await client.send_message(message.channel,msg.split(" "))
     await bot.process_commands(message)
+
+
 
 @bot.command(pass_context=True)
 async def quote(ctx):
@@ -61,17 +69,22 @@ async def quote(ctx):
                                                 "Already a quote."),
                     updateQuotes=lambda: client.send_message(message.channel,"Added:\n"+q)
                 )
-
-@bot.command(pass_context=True)
-async def speech(ctx):
+speeches = Speeches.Speeches
+@bot.command(pass_context=True, hidden=True)
+async def speech(ctx,):
 
     message = ctx.message
-    speeches = Speeches
+
     if(message.content.startswith("!speech")):
         msg = message.content.split(" ")
+        print(len(msg))
         print(msg[1])
         if(msg[1].lower() in speeches.keys()):
-            #print(speeches[msg[1]])
-            await client.send_message(message.channel,speeches[msg[1]])
+            await client.send_message(message.channel, speeches[msg[1]])
+        if(len(msg) == 3) and msg[2] != "":
+            await client.send_message(message.author, speeches[msg[1]])
 
-client.run('MzY3NTQ1NDIwOTkxNDMwNjY2.DL8_DQ.jilMs2jv9P5_rWCogxgqkSfZa1s')
+            #print(speeches[msg[1]])
+
+
+client.run(bcl.getToken())
